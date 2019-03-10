@@ -3,7 +3,7 @@ package foo.bar.bowling;
 public class DartsGame {
 
     private int score;
-
+    //todo
 
     public DartsGame() {
         this.score = 501;
@@ -13,20 +13,26 @@ public class DartsGame {
         return score;
     }
 
-   
 
-    public void hit(int point, TypeOfField field) {
+    public int turn(int point, TypeOfField field) {
+        int turnPoints = 0;
+        for (int i = 0; i < 2; i++) {
+            turnPoints = turnPoints + hit(point, field);
+        }
+        return turnPoints;
+
+    }
+
+
+    public int hit(int point, TypeOfField field) {
         if (!field.equals(TypeOfField.BULLSEYE)) {
             score = score - point * getFieldValue(field);
         } else {
             score = score - getFieldValue(field);
         }
-
-
-    }
-
-    public int score() {
         return score;
+
+
     }
 
 

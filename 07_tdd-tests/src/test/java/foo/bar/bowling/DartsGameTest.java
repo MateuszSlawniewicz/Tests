@@ -5,13 +5,18 @@ import org.junit.jupiter.api.Test;
 
 public class DartsGameTest {
 
+    DartsGame game = new DartsGame();
 
     @Test
-
-    public void testAllZeroGame() {
-
-        DartsGame game = new DartsGame();
+    void testAllZeroGame() {
         Assertions.assertEquals(501, game.getScore());
+
+    }
+
+    @Test
+    void testOneHIt() {
+        Assertions.assertEquals(451,game.hit(15,TypeOfField.BULLSEYE));
+
 
     }
 }
