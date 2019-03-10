@@ -25,7 +25,6 @@ public class WeatherAlarmNotifier {
         } else if (weather.getRainfall() > 100 && counter == 0) {
             return WeatherAlarmLevel.THIRD_LEVEL;
         }
-
         if (counter >= 2) {
             return WeatherAlarmLevel.FIRST_LEVEL;
         } else if (counter > 0) {

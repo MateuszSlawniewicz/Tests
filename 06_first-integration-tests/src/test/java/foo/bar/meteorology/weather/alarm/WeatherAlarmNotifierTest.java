@@ -7,6 +7,9 @@ import foo.bar.meteorology.weather.external.TemperatureProvider;
 import foo.bar.meteorology.weather.external.WindSpeedProvider;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.logging.Logger;
 
@@ -58,4 +61,15 @@ public class WeatherAlarmNotifierTest {
 
     }
 
+    @ParameterizedTest
+    @CsvFileSource(resources = "/weather.csv", numLinesToSkip = 1)
+    void alarmTest3(int a, int b, int c) {
+
+        when(mockWeatherServic2.getWeather()).thenReturn(new Weather(a, b, c));
+        WeatherAlarmNotifier weatherAlarmNotifier = new WeatherAlarmNotifier(mockWeatherServic2);
+        WeatherAlarmLevel weatherAlarmLevel = weatherAlarmNotifier.raiseLevelIfNeccessary();
+        Logger.getLogger("JUnit 5").info("Current weather : " + weatherAlarmLevel.toString());
+        assertNotNull(weatherAlarmLevel);
+
+    }
 }
