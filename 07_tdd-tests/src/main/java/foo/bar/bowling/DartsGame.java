@@ -14,14 +14,7 @@ public class DartsGame {
     }
 
 
-    public int turn(int point, TypeOfField field) {
-        int turnPoints = 0;
-        for (int i = 0; i < 2; i++) {
-            turnPoints = turnPoints + hit(point, field);
-        }
-        return turnPoints;
 
-    }
 
 
     public int hit(int point, TypeOfField field) {
